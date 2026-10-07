@@ -1,8 +1,8 @@
-# WinUtil Docs
+# WinUtilXX Docs
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
-Documentation site for [WinUtil](https://github.com/ChrisTitusTech/winutil), built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build). Served at [winutil.christitus.com](https://winutil.christitus.com/).
+Documentation site for [WinUtilXX](https://github.com/ChrisTitusTech/winutil), built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build). Served at [mohamedbabaamer.github.io/WinUtilXX](https://mohamedbabaamer.github.io/WinUtilXX/).
 
 ## 🚀 Project Structure
 
