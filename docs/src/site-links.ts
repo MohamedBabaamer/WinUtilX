@@ -1,5 +1,5 @@
-// Shared external links, so astro.config.mjs and Header.astro can't drift out of sync.
+// Shared external links for WinUtilX documentation.
 export const siteLinks = {
-	store: { label: 'Store', href: 'https://christitus.com/downloads/' },
-	forums: { label: 'Forums', href: 'https://forum.christitus.com/' },
+  store: { label: 'Releases', href: 'https://github.com/MohamedBabaamer/WinUtilX/releases' },
+  forums: { label: 'Discussions', href: 'https://github.com/MohamedBabaamer/WinUtilX/discussions' },
 } as const;
