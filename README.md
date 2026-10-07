@@ -1,91 +1,87 @@
-# Chris Titus Tech's Windows Utility
+# WinUtilX
 
-[![Version](https://img.shields.io/github/v/release/ChrisTitusTech/winutil?color=%230567ff&label=Latest%20Release&style=for-the-badge)](https://github.com/ChrisTitusTech/winutil/releases/latest)
-![Downloads](https://img.shields.io/github/downloads/ChrisTitusTech/winutil/winutil.ps1?label=Total%20Downloads&style=for-the-badge)
-[![Discord](https://dcbadge.limes.pink/api/server/https://discord.gg/RUbZUZyByQ?theme=default-inverted&style=for-the-badge)](https://discord.gg/RUbZUZyByQ)
-
-A curated compilation of Windows system tasks streamline **installs**, debloat with **tweaks**, troubleshoot with **config**, and configure **Windows updates**. Run it fresh on every new Windows install.
-
-![Title Screen](docs/src/assets/branding/title-screen.png)
-
+<p align="center"><img src="assets/winutilx.svg" width="120" alt="WinUtilX logo"></p>
+<p align="center"><strong>A focused Windows utility toolbox for everyday users and power users.</strong><br>Install useful software, apply Windows tweaks, manage configuration, and handle common system tasks from one interface.</p>
 
 ---
+
+## What is WinUtilX?
+
+**WinUtilX** is Mohamed Babaamer's customized Windows toolbox based on the open-source WinUtil project.
+
+The project keeps useful Windows administration, tweaking, installation, troubleshooting, and configuration workflows while giving the project its own focused application catalog and branding.
+
+### WinUtilX focuses on
+
+- Windows system utilities
+- Software installation through package managers
+- Windows tweaks and configuration
+- System cleanup and optimization
+- Network and DNS tools
+- Troubleshooting and diagnostics
+- Windows installation and ISO tools
+- Presets and automation
+- A curated application list selected for WinUtilX
+
+## Curated Applications
+
+WinUtilX intentionally does **not** keep the entire upstream application catalog.
+
+The current application catalog contains **67 applications** selected from Mohamed Babaamer's personal `apphub-data` collection and matched against applications already available in the upstream catalog.
+
+The catalog is maintained in `config/applications.json`.
+
+`apphub-data` is used only as a reference for the curated application selection. The `apphub-data` repository itself is not modified by WinUtilX.
 
 ## Quick Start
 
-> **WinUtil must be run as Administrator** because it performs system-wide changes.
+> **Run WinUtilX as Administrator.** Some operations make system-wide Windows changes.
 
-Open PowerShell or Terminal as admin, then run:
-
-**Stable Branch (recommended)**
-```ps1
-irm https://christitus.com/win | iex
-```
-
-**Development Branch**
-```ps1
-irm https://christitus.com/windev | iex
-```
-
-### How to open an admin terminal
-
-- **Start menu:** Right-click Start → *Windows PowerShell (Admin)* or *Terminal (Admin)*
-- **Search:** Press the `Windows key`, and type `PowerShell` or `Terminal`, then `Ctrl + Shift + Enter`
-
----
-
-## Automation / Presets
-
-Apply a predefined configuration without manual selection:
+Open PowerShell or Windows Terminal as Administrator and run the local script:
 
 ```powershell
-& ([ScriptBlock]::Create((irm https://christitus.com/win))) -Preset Standard
+.\WinUtil.ps1
 ```
 
-| Preset | Description |
-|--------|-------------|
-| `Standard` | Balanced defaults for most users |
-| `Minimal` | Minimal changes to suit every user |
-| `Advanced` | Deep tweaks for power users |
+## Build
 
-To view exactly what each preset does, see:
-https://github.com/ChrisTitusTech/winutil/blob/main/config/preset.json
+WinUtilX follows the upstream source/build structure. After changing source files, use the repository's build process to regenerate the distributable script rather than manually editing generated output.
 
----
+| Path | Purpose |
+|---|---|
+| `config/applications.json` | WinUtilX application catalog |
+| `config/tweaks.json` | Windows tweaks |
+| `config/dns.json` | DNS configuration |
+| `config/preset.json` | Automation presets |
+| `scripts/` | PowerShell application logic |
+| `xaml/` | WinUtilX graphical interface |
+| `assets/` | WinUtilX branding assets |
 
-## Build & Develop
+## Design Direction
 
-See https://github.com/ChrisTitusTech/winutil/blob/main/.github/CONTRIBUTING.md
+- **Name:** WinUtilX
+- **Primary identity:** Windows utility / system toolbox
+- **Style:** clean, technical, lightweight
+- **Accent:** cyan → violet
+- **Logo:** Windows-inspired four-panel mark with WinUtilX wordmark
+- **Goal:** useful first, branding second
 
----
+## Attribution
 
-## Resources
+WinUtilX is a customized/rebranded derivative of the open-source **WinUtil** project originally created by **Chris Titus Tech / CT Tech Group LLC**.
 
-- [Official Documentation](https://winutil.christitus.com/)
-- [YouTube Tutorial](https://www.youtube.com/watch?v=6UQZ5oQg8XA)
-- [ChrisTitus.com Article](https://christitus.com/windows-tool/)
-- [Known Issues](https://winutil.christitus.com/knownissues/)
-- [Report an Issue](https://github.com/ChrisTitusTech/winutil/issues)
+This project is **not affiliated with, endorsed by, or an official release of Chris Titus Tech**.
 
----
+The original MIT license and copyright notice are preserved in [LICENSE](LICENSE).
 
-## Support
+## License
 
-- Leave a ⭐ to show support!
-- Faster Dotnet Implementation for sale here: https://www.cttstore.com/windows-toolbox
+WinUtilX is distributed under the **MIT License**. See [LICENSE](LICENSE) for the complete license text.
 
-## Sponsors
+## Author
 
-These are the sponsors that help keep this project alive with monthly contributions.
+**Mohamed Babaamer**
 
-<!-- sponsors --><a href="https://github.com/dwelfusius"><img src="https:&#x2F;&#x2F;github.com&#x2F;dwelfusius.png" width="60px" alt="User avatar: " /></a><a href="https://github.com/mews-se"><img src="https:&#x2F;&#x2F;github.com&#x2F;mews-se.png" width="60px" alt="User avatar: Martin" /></a><a href="https://github.com/jdiegmueller"><img src="https:&#x2F;&#x2F;github.com&#x2F;jdiegmueller.png" width="60px" alt="User avatar: Jason A. Diegmueller" /></a><a href="https://github.com/robertsandrock"><img src="https:&#x2F;&#x2F;github.com&#x2F;robertsandrock.png" width="60px" alt="User avatar: RMS" /></a><a href="https://github.com/paulsheets"><img src="https:&#x2F;&#x2F;github.com&#x2F;paulsheets.png" width="60px" alt="User avatar: Paul" /></a><a href="https://github.com/djones369"><img src="https:&#x2F;&#x2F;github.com&#x2F;djones369.png" width="60px" alt="User avatar: Dave J  (WhamGeek)" /></a><a href="https://github.com/anthonymendez"><img src="https:&#x2F;&#x2F;github.com&#x2F;anthonymendez.png" width="60px" alt="User avatar: Anthony Mendez" /></a><a href="https://github.com/FatBastard0"><img src="https:&#x2F;&#x2F;github.com&#x2F;FatBastard0.png" width="60px" alt="User avatar: " /></a><a href="https://github.com/DursleyGuy"><img src="https:&#x2F;&#x2F;github.com&#x2F;DursleyGuy.png" width="60px" alt="User avatar: DursleyGuy" /></a><a href="https://github.com/DwayneTheRockLobster1"><img src="https:&#x2F;&#x2F;github.com&#x2F;DwayneTheRockLobster1.png" width="60px" alt="User avatar: " /></a><a href="https://github.com/KieraKujisawa"><img src="https:&#x2F;&#x2F;github.com&#x2F;KieraKujisawa.png" width="60px" alt="User avatar: Kiera Meredith" /></a><a href="https://github.com/seanh1995"><img src="https:&#x2F;&#x2F;github.com&#x2F;seanh1995.png" width="60px" alt="User avatar: Sean (ANGRYxScotsman)" /></a><a href="https://github.com/josencarnacao"><img src="https:&#x2F;&#x2F;github.com&#x2F;josencarnacao.png" width="60px" alt="User avatar: José Encarnação" /></a><!-- sponsors -->
+GitHub: https://github.com/MohamedBabaamer
 
-*<sub>Sponsors with a recurring subscription also get access to the .NET alternative.</sub>
-
----
-
-## Contributors
-
-[![Contributors](https://contrib.rocks/image?repo=ChrisTitusTech/winutil)](https://github.com/ChrisTitusTech/winutil/graphs/contributors)
-
-Thanks to everyone who has contributed time and effort to this project. Keep rocking 🍻
+Project: https://github.com/MohamedBabaamer/WinUtilX
