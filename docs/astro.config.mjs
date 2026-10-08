@@ -11,8 +11,8 @@ export default defineConfig({
 			title: 'WinUtilX',
 			description: "WinUtilX — install apps, apply tweaks, run fixes, and manage Windows from one place.",
 			logo: {
-				src: './src/assets/branding/navlogo.png',
-				replacesTitle: true,
+				src: './src/assets/branding/winutilx-mark.svg',
+				replacesTitle: false,
 			},
 			favicon: '/favicon.svg',
 			head: [
