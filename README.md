@@ -1,246 +1,201 @@
 # WinUtilX
 
 <p align="center">
-  <img src="assets/winutilx.svg" width="120" alt="WinUtilX">
+  <img src="assets/winutilx.svg" width="112" alt="WinUtilX logo">
+</p>
+
+<h1 align="center">WinUtilX</h1>
+
+<p align="center">
+  <strong>A practical Windows utility toolbox by Mohamed Babaamer.</strong><br>
+  Install applications, manage Windows settings, apply selected tweaks, troubleshoot common issues, and configure a Windows PC from one native interface.
 </p>
 
 <p align="center">
-  <strong>WinUtilX — Windows Utility Toolbox</strong><br>
-  Install applications, apply Windows tweaks, run fixes, manage updates, and configure Windows from one place.
+  <a href="https://github.com/MohamedBabaamer/WinUtilX/releases/latest"><img src="https://img.shields.io/github/v/release/MohamedBabaamer/WinUtilX?style=for-the-badge&label=Latest%20Release" alt="Latest release"></a>
+  <a href="https://github.com/MohamedBabaamer/WinUtilX/actions/workflows/ci.yml"><img src="https://github.com/MohamedBabaamer/WinUtilX/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+  <a href="https://github.com/MohamedBabaamer/WinUtilX/releases"><img src="https://img.shields.io/github/downloads/MohamedBabaamer/WinUtilX/total?style=for-the-badge&label=Downloads" alt="Total downloads"></a>
+  <a href="https://github.com/MohamedBabaamer/WinUtilX/stargazers"><img src="https://img.shields.io/github/stars/MohamedBabaamer/WinUtilX?style=for-the-badge" alt="GitHub stars"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/MohamedBabaamer/WinUtilX?style=for-the-badge" alt="MIT license"></a>
+  <br>
+  <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?style=flat-square&logo=windows&logoColor=white" alt="Windows 10 and 11">
+  <img src="https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?style=flat-square&logo=powershell&logoColor=white" alt="PowerShell 5.1 and later">
 </p>
 
 <p align="center">
-  <a href="https://github.com/MohamedBabaamer/WinUtilX/releases/latest"><img src="https://img.shields.io/github/v/release/MohamedBabaamer/WinUtilX?style=for-the-badge&label=Latest%20Release"></a>
-  <a href="https://img.shields.io/github/downloads/MohamedBabaamer/WinUtilX/total?style=for-the-badge&label=Downloads"><img src="https://img.shields.io/github/downloads/MohamedBabaamer/WinUtilX/total?style=for-the-badge&label=Downloads"></a>
-  <a href="https://github.com/MohamedBabaamer/WinUtilX"><img src="https://img.shields.io/github/stars/MohamedBabaamer/WinUtilX?style=for-the-badge"></a>
-  <img src="https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=for-the-badge&logo=windows&logoColor=white">
-  <img src="https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?style=for-the-badge&logo=powershell&logoColor=white">
+  <a href="https://github.com/MohamedBabaamer/WinUtilX/releases/latest"><strong>Download WinUtilX</strong></a>
+  ·
+  <a href="https://github.com/MohamedBabaamer/WinUtilX/releases">All releases</a>
+  ·
+  <a href="CHANGELOG.md">Changelog</a>
+  ·
+  <a href="SECURITY.md">Security policy</a>
 </p>
 
 ---
 
-## What is WinUtilX?
+## Overview
 
-WinUtilX is an independent Windows utility toolbox for common setup, maintenance, configuration, troubleshooting, and software installation tasks from one interface.
+WinUtilX is an independent Windows utility toolbox based on the open-source WinUtil project. It keeps the PowerShell and native WPF foundation while adding WinUtilX branding, a refined visual theme, an expanded application catalog, release automation, and project maintenance workflows.
 
-It is designed for users who want a practical collection of tools without having to remember dozens of separate PowerShell commands, registry paths, installers, and Windows settings pages.
+The goal is to make common setup and maintenance tasks easier to discover without hiding what system-level changes do.
 
-### What WinUtilX can do
+### Features
 
-- **Install Applications** — install and upgrade a curated selection of useful software.
-- **Windows Tweaks** — apply privacy, performance, UI, and system configuration changes.
-- **Configuration & Fixes** — run common Windows repair and configuration tasks.
-- **Windows Updates** — manage Windows Update related settings and operations.
-- **DNS Tools** — configure common DNS providers.
-- **Win11 Creator** — work with Windows 11 installation media and customization.
-- **Automation** — use presets and configuration files for repeatable setups.
-- **Diagnostics** — inspect useful system information when troubleshooting.
+| Area | What it provides |
+|---|---|
+| **Applications** | Browse and install a curated catalog of Windows applications. |
+| **Windows tweaks** | Access supported privacy, performance, interface, and system settings. |
+| **Fixes and configuration** | Run built-in Windows repair and configuration actions. |
+| **Windows Update** | Manage supported update-related settings and operations. |
+| **DNS tools** | Configure supported DNS providers. |
+| **Win11 Creator** | Access Windows 11 setup and customization utilities included in the project. |
+| **Presets** | Use predefined configuration options for repeatable setups. |
+| **External tools** | Launch separately integrated utilities when configured. |
 
----
+Features and availability depend on the selected tool, Windows version, permissions, and application metadata.
 
-## Run WinUtilX
+## Quick start
 
-WinUtilX requires **Administrator privileges** for operations that modify Windows system settings.
+### Option 1 — Use the launcher
 
-### One-command launcher
+Open PowerShell on Windows and run:
 
-When the launcher and a compatible GitHub Release are available, run:
-
-~~~powershell
+```powershell
 irm "https://raw.githubusercontent.com/MohamedBabaamer/WinUtilX/main/install.ps1" | iex
-~~~
+```
 
-The launcher downloads the latest compiled WinUtilX release and starts it locally.
+The launcher downloads the compiled script from the latest GitHub Release and starts it. If a suitable release asset is unavailable, it attempts to build from the source archive.
 
-> **Security note:** irm | iex downloads and executes remote code. Only use it when you trust the repository and have reviewed the source/release you are running. For maximum control, download the release manually and inspect it first.
+> **Security:** this command downloads and executes a remote PowerShell script. Read [install.ps1](install.ps1) and the source code first if you need to verify what will run. For a more cautious approach, download the release asset manually and inspect it before executing it.
 
-### Run a downloaded release
+### Option 2 — Download the release manually
 
-Download "winutilx.ps1" from the latest GitHub Release and run:
+1. Open **[WinUtilX Releases](https://github.com/MohamedBabaamer/WinUtilX/releases/latest)**.
+2. Download `winutilx.ps1` and its accompanying `winutilx.ps1.sha256` checksum file.
+3. Verify the checksum, then run the script from PowerShell.
 
-~~~powershell
-powershell -ExecutionPolicy Bypass -File .\winutilx.ps1
-~~~
+```powershell
+Get-FileHash .\winutilx.ps1 -Algorithm SHA256
+powershell.exe -ExecutionPolicy Bypass -File .\winutilx.ps1
+```
 
-You can also use PowerShell 7:
+Compare the displayed hash with the hash in `winutilx.ps1.sha256`. The checksum helps verify that the downloaded file matches the published asset; it is not a digital signature.
 
-~~~powershell
-pwsh -ExecutionPolicy Bypass -File .\winutilx.ps1
-~~~
+WinUtilX needs **Administrator privileges for operations that modify system-wide Windows settings**. Review each tweak before applying it, and create a restore point before making significant system changes.
 
----
+## Releases
 
-## Releases and versioning
+The first versioned release is **[WinUtilX v0.1.0](https://github.com/MohamedBabaamer/WinUtilX/releases/tag/v0.1.0)**. Use the [latest release page](https://github.com/MohamedBabaamer/WinUtilX/releases/latest) for the current published version and downloads.
 
-The **Release WinUtilX** workflow validates configuration JSON, compiles and syntax-checks the PowerShell script, and packages these release assets:
+Each automated release is intended to include:
 
-- `winutilx.ps1` — compiled application
-- `winutilx.ps1.sha256` — SHA-256 checksum for integrity verification
-- `build-info.txt` — version, source commit, build time, and checksum
+- `winutilx.ps1` — compiled WinUtilX application.
+- `winutilx.ps1.sha256` — SHA-256 checksum of the compiled script.
+- `build-info.txt` — version, source commit, build timestamp, and checksum.
 
-To publish a version from the latest tested `main` commit, create and push a semantic version tag:
+### Publish a new version
 
-~~~powershell
+Release automation runs when a version tag such as `v0.1.1` is pushed. First, test your changes on Windows and ensure the desired changes are merged into `main`.
+
+```powershell
 git switch main
 git pull origin main
-git tag v0.1.0
-git push origin v0.1.0
-~~~
+git tag v0.1.1
+git push origin v0.1.1
+```
 
-Use a new version tag for each release (for example, `v0.1.1` or `v0.2.0`); do not reuse a published tag. Alternatively, open **Actions → Release WinUtilX → Run workflow** and enter a version such as `v0.1.0`. Leave the version blank to validate/build without publishing a release.
+Use a **new, unique semantic version tag** for each release; don't reuse an already published tag. Prerelease tags can use versions such as `v0.2.0-rc.1`.
 
-Before public distribution, test the compiled UI on Windows and review the release notes and assets. To check a downloaded script's checksum, compare its SHA-256 value with the one in `winutilx.ps1.sha256`.
+You can also open [GitHub Actions](https://github.com/MohamedBabaamer/WinUtilX/actions), select **WinUtilX Release**, and choose **Run workflow**. Enter a version to publish a release, or leave it blank to validate, compile, and upload a temporary build artifact without publishing a release.
 
----
+The release workflow validates JSON configuration, compiles the source, checks the generated PowerShell syntax, and packages the release assets. It does not launch the application or apply Windows tweaks.
 
-## Build WinUtilX from Source
+## Build from source
 
-The repository is intentionally split into source files. The final "winutil.ps1" script is generated by "Compile.ps1".
+### Requirements
 
-Clone the repository:
+- Windows 10 or Windows 11.
+- Windows PowerShell 5.1 or a compatible PowerShell installation.
+- Git, if you want to clone and update the repository.
 
-~~~powershell
+### Compile
+
+```powershell
 git clone https://github.com/MohamedBabaamer/WinUtilX.git
 cd WinUtilX
-~~~
 
-Compile:
-
-~~~powershell
+# Generate the compiled script
 .\Compile.ps1
-~~~
 
-Compile and immediately run:
-
-~~~powershell
+# Compile and immediately launch the application
 .\Compile.ps1 -Run
-~~~
+```
 
-The generated file is "winutil.ps1". It is local build output and is intentionally not committed to the source repository.
+The generated `winutil.ps1` file is local build output and is intentionally not committed. Do not edit it directly; make changes to the source files and compile again.
 
-### Important
+## Application catalog
 
-Do **not** edit the generated "winutil.ps1" directly.
+WinUtilX uses the catalog maintained in [MohamedBabaamer/apphub-data](https://github.com/MohamedBabaamer/apphub-data) as its application list.
 
-Change the source files instead:
+The catalog currently contains **242 applications** in `config/applications.json`. For entries present in both catalogs, WinUtilX retains canonical metadata from its existing catalog where available. AppHub-only entries keep their supplied metadata. Package availability depends on the configured package IDs and each application's upstream distribution.
 
-| Location | Purpose |
+Always review an application's source and details before installing it.
+
+## Interface and project structure
+
+WinUtilX retains its native PowerShell/WPF architecture. The interface has refined Segoe UI typography, spacing, cards, light/dark theme resources, and clearer hover, focus, selected, and disabled states. It aims to feel more consistent while remaining lightweight; it is not a copy of another Windows utility's interface.
+
+| Path | Purpose |
 |---|---|
-| `config/` | Applications, tweaks, DNS, themes, presets, features |
-| `functions/` | PowerShell functionality and UI behavior |
-| `scripts/` | Startup, compilation, and main UI logic |
-| `xaml/` | WPF interface and reusable styles |
-| `tools/` | Supporting utilities |
-| `assets/` | WinUtilX branding and assets |
+| `config/` | Application catalog, themes, tweaks, presets, DNS, and feature configuration |
+| `functions/` | PowerShell behavior and UI logic |
+| `scripts/` | Startup, compilation validation, and application startup |
+| `xaml/` | Native WPF interface and styles |
+| `tools/` | Supporting utilities and templates |
+| `assets/` | WinUtilX visual assets |
+| `.github/workflows/` | CI validation and release automation |
+| `docs/` | Optional documentation source |
 
----
+### Workflows
 
-## Applications
+- **WinUtilX CI** — validates the JSON configuration and compiles and syntax-checks the generated PowerShell script on Windows.
+- **WinUtilX Release** — builds tagged releases and creates checksum and build metadata files.
+- **Dependabot** — checks GitHub Actions dependencies for updates.
 
-WinUtilX uses the AppHub catalog as its application source, keeping the application list aligned with the catalog maintained separately in `MohamedBabaamer/apphub-data`.
+See [GitHub Actions](https://github.com/MohamedBabaamer/WinUtilX/actions) for workflow history and results.
 
-The catalog contains **242 applications** synced from the `MohamedBabaamer/apphub-data` catalog. For overlapping entries, WinUtilX prefers the canonical metadata already maintained in its application catalog; AppHub-only entries retain their supplied metadata.
+## Safety guidelines
 
-The catalog is maintained in:
+WinUtilX can change system settings and registry values. Before using advanced or system-level options:
 
-~~~text
-config/applications.json
-~~~
+- Create a restore point and back up important files.
+- Read the tweak description before enabling it.
+- Understand possible side effects and whether a restart may be required.
+- Test on a non-critical machine before relying on a configuration for production or daily use.
 
-Application availability depends on each entry's package identifiers and metadata. Review an application's details and source before installing it.
+WinUtilX is a utility toolbox, not a replacement for a backup strategy. Third-party tools and package managers may have their own terms and security requirements.
 
----
+## Contributing
 
-## UI design
+Issues, bug reports, documentation improvements, and focused pull requests are welcome. Before submitting a change, compile the project and test affected behavior on Windows. Please don't commit generated `winutil.ps1` build output.
 
-WinUtilX keeps the original WPF/XAML layout and PowerShell engine, with a restrained native-Windows visual style: Segoe UI typography, clearer spacing, subtle card borders, consistent light/dark theme resources, and more visible hover, selected, disabled, and keyboard-focus states. The interface is designed to remain compact and lightweight rather than imitate another Windows utility.
+Review the [security policy](SECURITY.md) before reporting a vulnerability.
 
-The UI is driven by the existing XAML, theme resources, PowerShell functions, and JSON configuration. Changes should be made in source files and tested by compiling the application; do not edit the generated script directly.
+## Attribution and license
 
----
+WinUtilX is based on the open-source **WinUtil** project created by **Chris Titus Tech / CT Tech Group LLC**. The WinUtilX modifications and branding are maintained by **Mohamed Babaamer**.
 
-## Presets
+WinUtilX is an independent project. It is **not an official Chris Titus Tech product and is not affiliated with or endorsed by Chris Titus Tech**. The original license and required copyright notices are preserved in [LICENSE](LICENSE).
 
-WinUtilX supports predefined configuration presets for users who want a faster setup.
+- Copyright © 2026 Mohamed Babaamer for WinUtilX modifications.
+- Copyright © Chris Titus Tech / CT Tech Group LLC for original WinUtil portions.
 
-Presets are stored in:
+WinUtilX is distributed under the **MIT License**. See [LICENSE](LICENSE) for the full license text.
 
-~~~text
-config/preset.json
-~~~
-
-Review a preset before applying it, especially when using system-level tweaks.
-
----
-
-## Safety
-
-WinUtilX can make system-level Windows changes.
-
-Before applying significant tweaks:
-
-- Create a restore point.
-- Read the description of a tweak before enabling it.
-- Keep backups of important files.
-- Understand that some changes may require a restart.
-- Use advanced or destructive options only when you understand their effect.
-
-WinUtilX is a toolbox, not a replacement for a Windows backup strategy.
-
----
-
-## Documentation
-
-The repository contains optional documentation under `docs/`. The documentation site is not required to run the PowerShell application. Until the published documentation URL is configured and verified, use the repository files and release notes as the source of truth.
-
----
-
-## Development
-
-WinUtilX is maintained by Mohamed Babaamer. Pull requests and improvements are welcome. Keep changes focused and avoid modifying the generated script.
-
-For source development:
-
-~~~powershell
-.\Compile.ps1
-~~~
-
-For GUI testing:
-
-~~~powershell
-.\Compile.ps1 -Run
-~~~
-
-The generated "winutil.ps1" should remain uncommitted.
-
----
-
-## Attribution
-
-WinUtilX is based on the open-source **WinUtil** project created by **Chris Titus Tech / CT Tech Group LLC**.
-
-WinUtilX is an independent customized project maintained by **Mohamed Babaamer**.
-
-It is **not an official Chris Titus Tech product and is not affiliated with or endorsed by Chris Titus Tech**.
-
-The original project license and required copyright notice are preserved in "LICENSE".
-
----
-
-## Copyright & License
-
-Copyright © 2026 Mohamed Babaamer for WinUtilX modifications.
-
-Copyright © Chris Titus Tech / CT Tech Group LLC for the original WinUtil portions.
-
-WinUtilX is distributed under the **MIT License**. See "LICENSE" for the complete license text.
-
----
-
-## Author
+## Maintainer
 
 **Mohamed Babaamer**
 
-GitHub: https://github.com/MohamedBabaamer
-
-WinUtilX: https://github.com/MohamedBabaamer/WinUtilX
+- GitHub: [@MohamedBabaamer](https://github.com/MohamedBabaamer)
+- Project: [WinUtilX](https://github.com/MohamedBabaamer/WinUtilX)
