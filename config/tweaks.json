@@ -1903,5 +1903,40 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "link": "https://winutil.christitus.com/code-reference/tweaks/performance-plans---not-for-laptops/removeultperf"
+  },
+  "WPFTweaksPrivacyBaseline": {
+    "Content": "Windows Privacy - Disable Telemetry & Tracking",
+    "Description": "Applies a conservative privacy baseline: disables common telemetry, activity collection, advertising ID, tailored experiences, and the DiagTrack service. It does not remove Windows components.",
+    "category": "Privacy & Security",
+    "panel": "1",
+    "registry": [
+      {"Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection", "Name": "AllowTelemetry", "Value": "0", "Type": "DWord", "OriginalValue": "<RemoveEntry>"},
+      {"Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "Name": "EnableActivityFeed", "Value": "0", "Type": "DWord", "OriginalValue": "<RemoveEntry>"},
+      {"Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "Name": "PublishUserActivities", "Value": "0", "Type": "DWord", "OriginalValue": "<RemoveEntry>"},
+      {"Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "Name": "UploadUserActivities", "Value": "0", "Type": "DWord", "OriginalValue": "<RemoveEntry>"},
+      {"Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo", "Name": "Enabled", "Value": "0", "Type": "DWord", "OriginalValue": "<RemoveEntry>"},
+      {"Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent", "Name": "DisableTailoredExperiencesWithDiagnosticData", "Value": "1", "Type": "DWord", "OriginalValue": "<RemoveEntry>"}
+    ],
+    "service": [
+      {"Name": "DiagTrack", "StartupType": "Disabled", "OriginalType": "Automatic"}
+    ]
+  },
+  "WPFTweaksWindowsSearchDisable": {
+    "Content": "Windows Search Service - Disable",
+    "Description": "Disables WSearch indexing. Windows Search and content indexing may become slower or less complete.",
+    "category": "Services & Performance",
+    "panel": "1",
+    "service": [
+      {"Name": "WSearch", "StartupType": "Disabled", "OriginalType": "Automatic"}
+    ]
+  },
+  "WPFTweaksSearchIndexingManual": {
+    "Content": "Windows Search Indexing - Manual",
+    "Description": "Sets WSearch to Manual instead of Disabled. Use this lighter option if you still want Windows Search available when needed.",
+    "category": "Services & Performance",
+    "panel": "1",
+    "service": [
+      {"Name": "WSearch", "StartupType": "Manual", "OriginalType": "Automatic"}
+    ]
   }
 }
