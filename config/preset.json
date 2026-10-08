@@ -57,5 +57,44 @@
     "WPFAppxMicrosoft_BingNews",
     "WPFAppxMicrosoft_Copilot",
     "WPFAppxMicrosoft_BingSearch"
+  ],
+  "WinUtilXPrivacy": [
+    "WPFTweaksPrivacyBaseline",
+    "WPFTweaksAdvertisingID",
+    "WPFTweaksTailoredExperiences",
+    "WPFTweaksDiagnosticData",
+    "WPFTweaksAppDiagnostics",
+    "WPFTweaksFindMyDevice",
+    "WPFTweaksWindowsSync",
+    "WPFTweaksOnlineSpeech",
+    "WPFTweaksTypingPersonalization",
+    "WPFTweaksWERTelemetry",
+    "WPFTweaksActivity",
+    "WPFTweaksLocation",
+    "WPFTweaksConsumerFeatures",
+    "WPFTweaksTelemetry"
+  ],
+  "WinUtilXCleanInstall": [
+    "WPFTweaksRestorePoint",
+    "WPFTweaksPrivacyBaseline",
+    "WPFTweaksAdvertisingID",
+    "WPFTweaksTailoredExperiences",
+    "WPFTweaksDiagnosticData",
+    "WPFTweaksConsumerFeatures",
+    "WPFTweaksActivity",
+    "WPFTweaksLocation",
+    "WPFTweaksDarkMode",
+    "WPFTweaksTransparencyOff",
+    "WPFTweaksEndTask",
+    "WPFTweaksWPBT"
+  ],
+  "WinUtilXPerformance": [
+    "WPFTweaksRestorePoint",
+    "WPFTweaksTransparencyOff",
+    "WPFTweaksVisualEffectsPerformance",
+    "WPFTweaksWindowsSearchManual",
+    "WPFTweaksServices",
+    "WPFTweaksDeleteTempFiles",
+    "WPFTweaksEndTask"
   ]
 }
