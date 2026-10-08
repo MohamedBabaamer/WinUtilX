@@ -21,7 +21,7 @@
 
 ## What is WinUtilX?
 
-WinUtilX is a Windows utility toolbox focused on making common Windows setup, maintenance, configuration, troubleshooting, and software installation tasks easier to manage from one interface.
+WinUtilX is an independent Windows utility toolbox for common setup, maintenance, configuration, troubleshooting, and software installation tasks from one interface.
 
 It is designed for users who want a practical collection of tools without having to remember dozens of separate PowerShell commands, registry paths, installers, and Windows settings pages.
 
@@ -44,7 +44,7 @@ WinUtilX requires **Administrator privileges** for operations that modify Window
 
 ### One-command launcher
 
-Once the first WinUtilX release is published, the recommended launcher will be:
+When the launcher and a compatible GitHub Release are available, run:
 
 ~~~powershell
 irm "https://raw.githubusercontent.com/MohamedBabaamer/WinUtilX/main/install.ps1" | iex
@@ -103,20 +103,20 @@ Change the source files instead:
 
 | Location | Purpose |
 |---|---|
-| "config/" | Applications, tweaks, DNS, presets |
-| "functions/" | PowerShell functionality |
-| "scripts/" | Startup and main UI logic |
-| "xaml/" | WinUtilX interface |
-| "tools/" | Supporting utilities |
-| "assets/" | WinUtilX branding |
+| `config/` | Applications, tweaks, DNS, themes, presets, features |
+| `functions/` | PowerShell functionality and UI behavior |
+| `scripts/` | Startup, compilation, and main UI logic |
+| `xaml/` | WPF interface and reusable styles |
+| `tools/` | Supporting utilities |
+| `assets/` | WinUtilX branding and assets |
 
 ---
 
 ## Applications
 
-WinUtilX uses a focused application catalog rather than keeping every application from the upstream project.
+WinUtilX uses the AppHub catalog as its application source, keeping the application list aligned with the catalog maintained separately in `MohamedBabaamer/apphub-data`.
 
-The current catalog contains **67 applications** selected from my "apphub-data" collection and matched against applications already available in the project.
+The catalog contains **242 applications** synced from the `MohamedBabaamer/apphub-data` catalog. For overlapping entries, WinUtilX prefers the canonical metadata already maintained in its application catalog; AppHub-only entries retain their supplied metadata.
 
 The catalog is maintained in:
 
@@ -124,7 +124,15 @@ The catalog is maintained in:
 config/applications.json
 ~~~
 
-The application catalog is intentionally part of WinUtilX's identity: software that I do not want in my toolbox is not included.
+Application availability depends on each entry's package identifiers and metadata. Review an application's details and source before installing it.
+
+---
+
+## UI design
+
+WinUtilX keeps the original WPF/XAML layout and PowerShell engine, with a restrained native-Windows visual style: Segoe UI typography, clearer spacing, subtle card borders, consistent light/dark theme resources, and more visible hover, selected, disabled, and keyboard-focus states. The interface is designed to remain compact and lightweight rather than imitate another Windows utility.
+
+The UI is driven by the existing XAML, theme resources, PowerShell functions, and JSON configuration. Changes should be made in source files and tested by compiling the application; do not edit the generated script directly.
 
 ---
 
@@ -160,15 +168,13 @@ WinUtilX is a toolbox, not a replacement for a Windows backup strategy.
 
 ## Documentation
 
-The repository contains a documentation site under "docs/".
-
-The documentation website is optional for using WinUtilX. The PowerShell application itself does not depend on the website.
+The repository contains optional documentation under `docs/`. The documentation site is not required to run the PowerShell application. Until the published documentation URL is configured and verified, use the repository files and release notes as the source of truth.
 
 ---
 
 ## Development
 
-Pull requests and improvements are welcome.
+WinUtilX is maintained by Mohamed Babaamer. Pull requests and improvements are welcome. Keep changes focused and avoid modifying the generated script.
 
 For source development:
 
