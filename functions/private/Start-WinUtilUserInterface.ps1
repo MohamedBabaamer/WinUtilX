@@ -307,7 +307,6 @@ function Start-WinUtilUserInterface {
         $sync["Form"].Focus()
         $sync["Form"].Dispatcher.BeginInvoke([System.Windows.Threading.DispatcherPriority]::Background, [action]{ Initialize-WinUtilRunspacePool | Out-Null }) | Out-Null
         $sync["Form"].Dispatcher.BeginInvoke([System.Windows.Threading.DispatcherPriority]::Background, [action]{
-            Set-WinUtilTaskbaritem -overlay "logo"
         }) | Out-Null
         $sync["Form"].Dispatcher.BeginInvoke([System.Windows.Threading.DispatcherPriority]::Background, [action]{ Start-WinUtilTabWarmup }) | Out-Null
     })
@@ -380,7 +379,6 @@ function Start-WinUtilUserInterface {
     # WinUtilX: top-left application logo intentionally removed.
 
     $sync["Form"].Add_Activated({
-        Set-WinUtilTaskbaritem -overlay "logo"
     })
 
     $sync["ThemeButton"].Add_Click({
