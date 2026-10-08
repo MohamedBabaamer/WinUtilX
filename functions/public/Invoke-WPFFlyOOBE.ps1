@@ -8,7 +8,7 @@ function Invoke-WPFFlyOOBE {
         Write-WinUtilLog -Component "FlyOOBE" -Message "Checking the official FlyOOBE release." 
         $release = Invoke-RestMethod -Uri $apiUri -Headers @{ Accept = "application/vnd.github+json" } -ErrorAction Stop
 
-        $asset = $release.assets | Where-Object { $_.name -match '\.(exe|zip) | Select-Object -First 1
+        $asset = $release.assets | Where-Object { $_.name -match '\.(exe|zip)$' } | Select-Object -First 1
         if (-not $asset) {
             throw "No EXE or ZIP asset was found in the latest official FlyOOBE release."
         }
