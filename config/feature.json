@@ -360,4 +360,26 @@
     "function": "Invoke-WPFSSHServer",
     "link": "https://winutil.christitus.com/code-reference/features/remote-access/sshserver"
   }
+,
+  "WPFFlyOOBEbutton": {
+    "Content": "FlyOOBE",
+    "Description": "Windows setup companion. Downloads and launches the latest official FlyOOBE release.",
+    "category": "Tools",
+    "panel": "1",
+    "Type": "Button",
+    "ButtonWidth": "300",
+    "function": "Invoke-WPFFlyOOBE",
+    "link": "https://github.com/builtbybel/FlyOOBE/releases/latest"
+  },
+  "WPFOOSUbutton": {
+    "Content": "O&O ShutUp10++",
+    "Description": "Review Windows privacy settings with O&O ShutUp10++.",
+    "category": "Tools",
+    "panel": "1",
+    "Type": "Button",
+    "ButtonWidth": "300",
+    "function": "Invoke-WPFOOSU",
+    "link": "https://www.oo-software.com/en/shutup10"
+  }
+}
 }
