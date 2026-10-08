@@ -35,64 +35,70 @@ function Invoke-WinUtilAssets {
 
   switch ($type) {
       'logo' {
-          $LogoPathData1 = @"
-M 18.00,14.00
-C 18.00,14.00 45.00,27.74 45.00,27.74
-45.00,27.74 57.40,34.63 57.40,34.63
-57.40,34.63 59.00,43.00 59.00,43.00
-59.00,43.00 59.00,83.00 59.00,83.00
-55.35,81.66 46.99,77.79 44.72,74.79
-41.17,70.10 42.01,59.80 42.00,54.00
-42.00,51.62 42.20,48.29 40.98,46.21
-38.34,41.74 25.78,38.60 21.28,33.79
-16.81,29.02 18.00,20.20 18.00,14.00 Z
-"@
-          $LogoPath1 = New-Object Windows.Shapes.Path
-          $LogoPath1.Data = [Windows.Media.Geometry]::Parse($LogoPathData1)
-          $LogoPath1.Fill = [System.Windows.Media.BrushConverter]::new().ConvertFromString("#0567ff")
+          # WinUtilX application mark.
+          # Keep this as native WPF geometry so the application has no external
+          # image dependency. The mark mirrors assets/winutilx.svg without the
+          # tiny wordmark because this asset is also used at 25px in the header
+          # and as a taskbar overlay.
+          $background = New-Object Windows.Shapes.Rectangle
+          $background.Width = 256
+          $background.Height = 256
+          $background.RadiusX = 48
+          $background.RadiusY = 48
+          $background.Fill = [System.Windows.Media.BrushConverter]::new().ConvertFromString("#0B1020")
 
-          $LogoPathData2 = @"
-M 107.00,14.00
-C 109.01,19.06 108.93,30.37 104.66,34.21
-100.47,37.98 86.38,43.10 84.60,47.21
-83.94,48.74 84.01,51.32 84.00,53.00
-83.97,57.04 84.46,68.90 83.26,72.00
-81.06,77.70 72.54,81.42 67.00,83.00
-67.00,83.00 67.00,43.00 67.00,43.00
-67.00,43.00 67.99,35.63 67.99,35.63
-67.99,35.63 80.00,28.26 80.00,28.26
-80.00,28.26 107.00,14.00 107.00,14.00 Z
-"@
-          $LogoPath2 = New-Object Windows.Shapes.Path
-          $LogoPath2.Data = [Windows.Media.Geometry]::Parse($LogoPathData2)
-          $LogoPath2.Fill = [System.Windows.Media.BrushConverter]::new().ConvertFromString("#0567ff")
+          $border = New-Object Windows.Shapes.Rectangle
+          $border.Width = 208
+          $border.Height = 208
+          $border.RadiusX = 40
+          $border.RadiusY = 40
+          $border.Stroke = [System.Windows.Media.BrushConverter]::new().ConvertFromString("#00D4FF")
+          $border.StrokeThickness = 8
+          $border.SetValue([Windows.Controls.Canvas]::LeftProperty, 24)
+          $border.SetValue([Windows.Controls.Canvas]::TopProperty, 24)
 
-          $LogoPathData3 = @"
-M 19.00,46.00
-C 21.36,47.14 28.67,50.71 30.01,52.63
-31.17,54.30 30.99,57.04 31.00,59.00
-31.04,65.41 30.35,72.16 33.56,78.00
-38.19,86.45 46.10,89.04 54.00,93.31
-56.55,94.69 60.10,97.20 63.00,97.22
-65.50,97.24 68.77,95.36 71.00,94.25
-76.42,91.55 84.51,87.78 88.82,83.68
-94.56,78.20 95.96,70.59 96.00,63.00
-96.01,60.24 95.59,54.63 97.02,52.39
-98.80,49.60 103.95,47.87 107.00,47.00
-107.00,47.00 107.00,67.00 107.00,67.00
-106.90,87.69 96.10,93.85 80.00,103.00
-76.51,104.98 66.66,110.67 63.00,110.52
-60.33,110.41 55.55,107.53 53.00,106.25
-46.21,102.83 36.63,98.57 31.04,93.68
-16.88,81.28 19.00,62.88 19.00,46.00 Z
-"@
-          $LogoPath3 = New-Object Windows.Shapes.Path
-          $LogoPath3.Data = [Windows.Media.Geometry]::Parse($LogoPathData3)
-          $LogoPath3.Fill = [System.Windows.Media.BrushConverter]::new().ConvertFromString("#a3a4a6")
+          # Four-panel WinUtilX mark. Use a gradient brush to match the
+          # repository SVG branding while keeping the rendering native to WPF.
+          $gradient = New-Object Windows.Media.LinearGradientBrush
+          $gradient.StartPoint = [Windows.Point]::new(0, 0)
+          $gradient.EndPoint = [Windows.Point]::new(1, 1)
+          $gradient.GradientStops.Add((New-Object Windows.Media.GradientStop([Windows.Media.ColorConverter]::ConvertFromString("#00D4FF"), 0))) | Out-Null
+          $gradient.GradientStops.Add((New-Object Windows.Media.GradientStop([Windows.Media.ColorConverter]::ConvertFromString("#7C3AED"), 1))) | Out-Null
 
-          $canvas.Children.Add($LogoPath1) | Out-Null
-          $canvas.Children.Add($LogoPath2) | Out-Null
-          $canvas.Children.Add($LogoPath3) | Out-Null
+          $panel1 = New-Object Windows.Shapes.Rectangle
+          $panel1.Width = 58
+          $panel1.Height = 58
+          $panel1.Fill = $gradient
+          $panel1.SetValue([Windows.Controls.Canvas]::LeftProperty, 58)
+          $panel1.SetValue([Windows.Controls.Canvas]::TopProperty, 70)
+
+          $panel2 = New-Object Windows.Shapes.Rectangle
+          $panel2.Width = 70
+          $panel2.Height = 58
+          $panel2.Fill = $gradient
+          $panel2.SetValue([Windows.Controls.Canvas]::LeftProperty, 128)
+          $panel2.SetValue([Windows.Controls.Canvas]::TopProperty, 70)
+
+          $panel3 = New-Object Windows.Shapes.Rectangle
+          $panel3.Width = 58
+          $panel3.Height = 46
+          $panel3.Fill = $gradient
+          $panel3.SetValue([Windows.Controls.Canvas]::LeftProperty, 58)
+          $panel3.SetValue([Windows.Controls.Canvas]::TopProperty, 140)
+
+          $panel4 = New-Object Windows.Shapes.Rectangle
+          $panel4.Width = 70
+          $panel4.Height = 46
+          $panel4.Fill = $gradient
+          $panel4.SetValue([Windows.Controls.Canvas]::LeftProperty, 128)
+          $panel4.SetValue([Windows.Controls.Canvas]::TopProperty, 140)
+
+          $canvas.Children.Add($background) | Out-Null
+          $canvas.Children.Add($border) | Out-Null
+          $canvas.Children.Add($panel1) | Out-Null
+          $canvas.Children.Add($panel2) | Out-Null
+          $canvas.Children.Add($panel3) | Out-Null
+          $canvas.Children.Add($panel4) | Out-Null
       }
       'checkmark' {
           $canvas.Width = 512
