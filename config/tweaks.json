@@ -2059,7 +2059,7 @@
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
         "Name": "LetAppsAccessCamera",
-        "Value": 2,
+        "Value": 0,
         "Type": "DWord",
         "OriginalValue": "<RemoveEntry>"
       }
@@ -2074,7 +2074,7 @@
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
         "Name": "LetAppsAccessMicrophone",
-        "Value": 2,
+        "Value": 0,
         "Type": "DWord",
         "OriginalValue": "<RemoveEntry>"
       }
