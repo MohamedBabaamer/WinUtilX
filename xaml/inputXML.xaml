@@ -431,7 +431,11 @@
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="BackgroundBorder" Property="Background" Value="{DynamicResource ButtonBackgroundSelectedColor}"/>
-                                <Setter Property="Foreground" Value="DimGray"/>
+                                <Setter TargetName="BackgroundBorder" Property="Opacity" Value="0.58"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="BackgroundBorder" Property="BorderBrush" Value="{DynamicResource ToggleButtonOnColor}"/>
+                                <Setter TargetName="BackgroundBorder" Property="BorderThickness" Value="2"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
