@@ -73,7 +73,7 @@ function Invoke-WPFUIElements {
         # Create an object for the application
         $entryObject = [PSCustomObject]@{
             Name        = $entry
-            Category    = $entryInfo.Category
+            Category    = if (-not [string]::IsNullOrWhiteSpace([string]$entryInfo.Category)) { [string]$entryInfo.Category } else { "General" }
             Content     = $entryInfo.Content
             Panel       = if ($entryInfo.Panel) { $entryInfo.Panel } else { "0" }
             Link        = $entryInfo.link
