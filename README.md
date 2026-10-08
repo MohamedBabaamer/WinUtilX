@@ -86,30 +86,9 @@ WinUtilX needs **Administrator privileges for operations that modify system-wide
 
 ## Releases
 
-The first versioned release is **[WinUtilX v0.1.0](https://github.com/MohamedBabaamer/WinUtilX/releases/tag/v0.1.0)**. Use the [latest release page](https://github.com/MohamedBabaamer/WinUtilX/releases/latest) for the current published version and downloads.
+The latest stable release is **[WinUtilX v0.1.0](https://github.com/MohamedBabaamer/WinUtilX/releases/tag/v0.1.0)**.
 
-Each automated release is intended to include:
-
-- `winutilx.ps1` — compiled WinUtilX application.
-- `winutilx.ps1.sha256` — SHA-256 checksum of the compiled script.
-- `build-info.txt` — version, source commit, build timestamp, and checksum.
-
-### Publish a new version
-
-Release automation runs when a version tag such as `v0.1.1` is pushed. First, test your changes on Windows and ensure the desired changes are merged into `main`.
-
-```powershell
-git switch main
-git pull origin main
-git tag v0.1.1
-git push origin v0.1.1
-```
-
-Use a **new, unique semantic version tag** for each release; don't reuse an already published tag. Prerelease tags can use versions such as `v0.2.0-rc.1`.
-
-You can also open [GitHub Actions](https://github.com/MohamedBabaamer/WinUtilX/actions), select **WinUtilX Release**, and choose **Run workflow**. Enter a version to publish a release, or leave it blank to validate, compile, and upload a temporary build artifact without publishing a release.
-
-The release workflow validates JSON configuration, compiles the source, checks the generated PowerShell syntax, and packages the release assets. It does not launch the application or apply Windows tweaks.
+Release assets include the compiled WinUtilX script, SHA-256 checksum, and build metadata.
 
 ## Build from source
 
