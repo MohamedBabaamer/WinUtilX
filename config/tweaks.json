@@ -2051,32 +2051,36 @@
     ]
   },
   "WPFTweaksCameraAccessDisable": {
-    "Content": "Camera Access - Disable",
-    "Description": "Blocks Windows apps from accessing the camera using the Windows App Privacy policy. Clear the tweak to return control to the user.",
+    "Content": "Camera Access",
+    "Description": "Controls Windows camera access for the current user. ON = Allow, OFF = Deny. This uses the same Windows privacy consent store used by Camera privacy settings.",
     "category": "01 - Privacy & Security",
     "panel": "1",
+    "Type": "Toggle",
     "registry": [
       {
-        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
-        "Name": "LetAppsAccessCamera",
-        "Value": 0,
-        "Type": "DWord",
-        "OriginalValue": "<RemoveEntry>"
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+        "Name": "Value",
+        "Value": "Deny",
+        "Type": "String",
+        "OriginalValue": "Allow",
+        "DefaultState": "false"
       }
     ]
   },
   "WPFTweaksMicrophoneAccessDisable": {
-    "Content": "Microphone Access - Disable",
-    "Description": "Blocks Windows apps from accessing the microphone using the Windows App Privacy policy. Clear the tweak to return control to the user.",
+    "Content": "Microphone Access",
+    "Description": "Controls Windows microphone access for the current user. ON = Allow, OFF = Deny. This uses the same Windows privacy consent store used by Microphone privacy settings.",
     "category": "01 - Privacy & Security",
     "panel": "1",
+    "Type": "Toggle",
     "registry": [
       {
-        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
-        "Name": "LetAppsAccessMicrophone",
-        "Value": 0,
-        "Type": "DWord",
-        "OriginalValue": "<RemoveEntry>"
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\microphone",
+        "Name": "Value",
+        "Value": "Deny",
+        "Type": "String",
+        "OriginalValue": "Allow",
+        "DefaultState": "false"
       }
     ]
   }
