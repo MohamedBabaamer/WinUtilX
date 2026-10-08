@@ -1,0 +1,33 @@
+name: WinUtilX CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: winutilx-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate configuration and build
+    runs-on: windows-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Validate JSON and compiled PowerShell syntax
+        shell: pwsh
+        run: ./scripts/Validate-WinUtilX.ps1

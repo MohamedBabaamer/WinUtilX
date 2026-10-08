@@ -1,33 +1,105 @@
-name: Release WinUtilX
+name: WinUtilX Release
 
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Optional release version, for example v0.1.0. Leave empty to build only."
+        required: false
+        type: string
+        default: ""
 
 permissions:
   contents: write
 
+concurrency:
+  group: winutilx-release-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build:
+    name: Validate, compile, and package
     runs-on: windows-latest
+    timeout-minutes: 15
+
     steps:
-      - name: Checkout WinUtilX
+      - name: Check out source
         uses: actions/checkout@v7
-
-      - name: Compile WinUtilX
-        shell: pwsh
-        run: |
-          Set-ExecutionPolicy Bypass -Scope Process -Force
-          ./Compile.ps1
-
-      - name: Rename compiled script
-        shell: pwsh
-        run: Copy-Item ./winutil.ps1 ./winutilx.ps1
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
         with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate configuration and compiled PowerShell
+        shell: pwsh
+        run: ./scripts/Validate-WinUtilX.ps1
+
+      - name: Determine release version
+        id: release_meta
+        shell: pwsh
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          $tag = ''
+          if ($env:GITHUB_EVENT_NAME -eq 'push' -and $env:GITHUB_REF_TYPE -eq 'tag') {
+            $tag = $env:GITHUB_REF_NAME
+          } elseif ($env:GITHUB_EVENT_NAME -eq 'workflow_dispatch') {
+            $tag = ([string]$env:INPUT_VERSION).Trim()
+          }
+
+          if ($tag -and $tag -notmatch '^v\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$') {
+            throw "Invalid version '$tag'. Use a version such as v0.1.0 or v0.2.0-rc.1."
+          }
+
+          $publish = -not [string]::IsNullOrWhiteSpace($tag)
+          "tag=$tag" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "publish=$($publish.ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+
+      - name: Package compiled release
+        shell: pwsh
+        env:
+          RELEASE_TAG: ${{ steps.release_meta.outputs.tag }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Path ./dist -Force | Out-Null
+          Copy-Item -LiteralPath ./winutil.ps1 -Destination ./dist/winutilx.ps1
+
+          $hash = (Get-FileHash -LiteralPath ./dist/winutilx.ps1 -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$hash  winutilx.ps1" | Set-Content -LiteralPath ./dist/winutilx.ps1.sha256 -Encoding ascii
+
+          $version = if ([string]::IsNullOrWhiteSpace($env:RELEASE_TAG)) { 'snapshot' } else { $env:RELEASE_TAG }
+          @(
+            "Product: WinUtilX"
+            "Version: $version"
+            "Commit: $env:GITHUB_SHA"
+            "Built (UTC): $([DateTime]::UtcNow.ToString('yyyy-MM-dd HH:mm:ss'))"
+            "Source: https://github.com/MohamedBabaamer/WinUtilX"
+            "SHA-256: $hash"
+          ) | Set-Content -LiteralPath ./dist/build-info.txt -Encoding utf8
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: WinUtilX-build-${{ github.run_number }}
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Publish GitHub Release
+        if: steps.release_meta.outputs.publish == 'true'
+        uses: softprops/action-gh-release@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ steps.release_meta.outputs.tag }}
+          target_commitish: ${{ github.sha }}
+          name: WinUtilX ${{ steps.release_meta.outputs.tag }}
           generate_release_notes: true
-          files: ./winutilx.ps1
+          prerelease: ${{ contains(steps.release_meta.outputs.tag, '-') }}
+          make_latest: ${{ !contains(steps.release_meta.outputs.tag, '-') }}
+          fail_on_unmatched_files: true
+          files: |
+            dist/winutilx.ps1
+            dist/winutilx.ps1.sha256
+            dist/build-info.txt
