@@ -161,6 +161,11 @@ function Invoke-WPFButtonAction {
         "WPFMinimal" {Invoke-WPFPresets "Minimal" -checkboxfilterpattern "WPFTweak*"}
         "WPFAdvanced" {Invoke-WPFPresets "Advanced" -checkboxfilterpattern "WPFTweak*"}
         "WPFClearTweaksSelection" {Invoke-WPFPresets -imported $true -checkboxfilterpattern "WPFTweak*"}
+        "WPFSelectAllPrivacy" { $sync.configs.tweaks.PSObject.Properties | Where-Object { $_.Value.category -eq "01 - Privacy & Security" } | ForEach-Object { if ($sync[$_.Name]) { $sync[$_.Name].IsChecked = $true } } }
+        "WPFSelectAllPerformance" { $sync.configs.tweaks.PSObject.Properties | Where-Object { $_.Value.category -eq "02 - Performance" } | ForEach-Object { if ($sync[$_.Name]) { $sync[$_.Name].IsChecked = $true } } }
+        "WPFSelectAllServices" { $sync.configs.tweaks.PSObject.Properties | Where-Object { $_.Value.category -eq "03 - Services" } | ForEach-Object { if ($sync[$_.Name]) { $sync[$_.Name].IsChecked = $true } } }
+        "WPFSelectAllCleanup" { $sync.configs.tweaks.PSObject.Properties | Where-Object { $_.Value.category -eq "04 - Cleanup" } | ForEach-Object { if ($sync[$_.Name]) { $sync[$_.Name].IsChecked = $true } } }
+        "WPFSelectAllUI" { $sync.configs.tweaks.PSObject.Properties | Where-Object { $_.Value.category -eq "05 - Windows UI" } | ForEach-Object { if ($sync[$_.Name]) { $sync[$_.Name].IsChecked = $true } } }
         "WPFClearInstallSelection" {Invoke-WPFPresets -imported $true -checkboxfilterpattern "WPFInstall*"}
         "WPFtweaksbutton" {Invoke-WPFtweaksbutton}
         "WPFOOSUbutton" {Invoke-WPFOOSU}
