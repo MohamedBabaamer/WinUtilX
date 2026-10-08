@@ -1903,12 +1903,5 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "link": "https://winutil.christitus.com/code-reference/tweaks/performance-plans---not-for-laptops/removeultperf"
-  },
-  "WPFFlyOOBEbutton": {
-    "Content": "FlyOOBE - Run",
-    "Description": "Downloads and launches the latest FlyOOBE release from the official GitHub repository.",
-    "category": "z__Advanced Tweaks - CAUTION",
-    "panel": "1",
-    "Type": "Button"
   }
 }
