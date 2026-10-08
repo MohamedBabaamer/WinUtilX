@@ -377,7 +377,9 @@ function Start-WinUtilUserInterface {
         $sync["Form"].MaxHeight = [Double]::PositiveInfinity
     })
 
-    # WinUtilX: top-left application logo intentionally removed.    $sync["Form"].Add_Activated({
+    # WinUtilX: top-left application logo intentionally removed.
+
+    $sync["Form"].Add_Activated({
         Set-WinUtilTaskbaritem -overlay "logo"
     })
 
