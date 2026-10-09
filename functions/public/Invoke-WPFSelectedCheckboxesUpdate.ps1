@@ -24,4 +24,30 @@ function Invoke-WPFSelectedCheckboxesUpdate ($type, $checkboxName) {
             Add-SelectedAppsMenuItem -name $sync.configs.applicationsHashtable.$_.Content -key $_
         }
     }
+
+    # Keep the Tweaks review panel synchronized with the selection list.
+    if ($listName -eq "selectedTweaks" -and $selectionChanged -and $null -ne $sync.Form) {
+        $countLabel = $sync.Form.FindName("WPFSelectedTweaksCount")
+        $selectedList = $sync.Form.FindName("WPFSelectedTweaksList")
+        $emptyLabel = $sync.Form.FindName("WPFNoTweaksSelected")
+        if ($null -ne $countLabel) {
+            $countLabel.Text = "$($sync.selectedTweaks.Count) tweaks will run"
+        }
+        if ($null -ne $selectedList) {
+            $selectedList.Items.Clear()
+            foreach ($selectedName in $sync.selectedTweaks) {
+                $selectedTweak = $sync.configs.tweaks.PSObject.Properties[$selectedName]
+                if ($null -ne $selectedTweak) {
+                    $selectedList.Items.Add([string]$selectedTweak.Value.Content) | Out-Null
+                }
+            }
+        }
+        if ($null -ne $emptyLabel) {
+            $emptyLabel.Visibility = if ($sync.selectedTweaks.Count -gt 0) {
+                [Windows.Visibility]::Collapsed
+            } else {
+                [Windows.Visibility]::Visible
+            }
+        }
+    }
 }
