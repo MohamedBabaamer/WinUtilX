@@ -32,7 +32,7 @@ function Initialize-WinUtilTabContent {
                 Initialize-WinUtilInstallTabControls
             }
             "Tweaks" {
-                Invoke-WPFUIElements -configVariable $sync.configs.tweaks -targetGridName "tweakspanel" -columncount 2 -Yield:$Yield
+                Invoke-WPFUIElements -configVariable $sync.configs.tweaks -targetGridName "tweakspanel" -columncount 3 -Yield:$Yield
             }
             "Config" {
                 Invoke-WPFUIElements -configVariable $sync.configs.feature -targetGridName "featurespanel" -columncount 2 -Yield:$Yield
