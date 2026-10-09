@@ -1417,7 +1417,33 @@
                                     <TextBlock Text="Selected tweaks are shown by their checked state in the list." Margin="0,4,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource MainForegroundColor}" Background="Transparent"/>
                                     <Separator Margin="0,8,0,0"/>
                                 </StackPanel>
-                                <TextBlock Grid.Row="1" Text="Hover over each tweak for its description. Some changes affect registry values, services, privacy, or Windows features." FontSize="12" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,4,0,8" Foreground="{DynamicResource MainForegroundColor}" Background="Transparent"/>
+                                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                                    <StackPanel>
+                                        <TextBlock Name="WPFNoTweaksSelected"
+                                                   Text="Select a tweak to review it here."
+                                                   TextWrapping="Wrap"
+                                                   Margin="0,4,0,8"
+                                                   FontSize="12"
+                                                   Foreground="{DynamicResource MainForegroundColor}"
+                                                   Background="Transparent"/>
+                                        <ItemsControl Name="WPFSelectedTweaksList">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border BorderBrush="{DynamicResource BorderColor}"
+                                                            BorderThickness="0,0,0,1"
+                                                            Padding="4,7"
+                                                            Margin="0,0,0,2">
+                                                        <TextBlock Text="{Binding}"
+                                                                   TextWrapping="Wrap"
+                                                                   FontSize="12"
+                                                                   Foreground="{DynamicResource MainForegroundColor}"
+                                                                   Background="Transparent"/>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </ScrollViewer>
                                 <StackPanel Grid.Row="2" Margin="0,10,0,0">
                                     <TextBlock Text="Create a restore point before system-level changes when possible." FontSize="11" TextWrapping="Wrap" Foreground="{DynamicResource MainForegroundColor}" Background="Transparent"/>
                                     <Button Name="WPFTweaksbutton" Content="Apply selected tweaks" Width="Auto" Height="38" Margin="0,10,0,5" HorizontalAlignment="Stretch" Background="{DynamicResource ProgressBarForegroundColor}" Foreground="#FFFFFF"/>
