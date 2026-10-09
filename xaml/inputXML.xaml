@@ -1356,57 +1356,27 @@
         <TabControl Name="WPFTabNav" Background="Transparent" Width="Auto" Height="Auto" BorderBrush="Transparent" BorderThickness="0" Grid.Row="2" Grid.Column="0" Padding="-1">
             <TabItem Header="Install" Visibility="Collapsed" Name="WPFTab1">
                 <Grid Background="Transparent">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Grid.Row="0" Orientation="Vertical" Margin="12,8,12,5">
-                        <TextBlock Text="Install apps"
-                                   FontSize="24"
-                                   FontWeight="Bold"
-                                   Foreground="{DynamicResource MainForegroundColor}"
-                                   Background="Transparent"/>
-                        <TextBlock Text="Pick what you need, then install it in one go."
-                                   Margin="0,3,0,0"
-                                   FontSize="13"
-                                   TextWrapping="Wrap"
-                                   Foreground="{DynamicResource MainForegroundColor}"
-                                   Background="Transparent"/>
+                    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Margin="12,8,12,5">
+                        <TextBlock Text="Install apps" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource MainForegroundColor}" Background="Transparent"/>
+                        <TextBlock Text="Pick what you need, then install it in one go." Margin="0,3,0,0" FontSize="13" Foreground="{DynamicResource MainForegroundColor}" Background="Transparent"/>
                     </StackPanel>
-
-                    <!-- App category filters remain separate from the shared search field. -->
-                    <WrapPanel Grid.Row="1"
-                               Orientation="Horizontal"
-                               Margin="5,4,5,7"
-                               Name="WPFSearchChips">
-                        <TextBlock Text="&#xE71C;"
-                                   FontFamily="Segoe MDL2 Assets"
-                                   FontSize="{DynamicResource IconFontSize}"
-                                   Foreground="{DynamicResource LabelboxForegroundColor}"
-                                   Background="Transparent"
-                                   VerticalAlignment="Center"
-                                   Margin="10,0,10,0"
-                                   ToolTip="Filter by category. Ctrl click to select more than one."/>
-                        <ToggleButton Name="WPFSearchChipAll"             Content="All"               Style="{StaticResource FilterChipToggleStyle}" IsChecked="True"/>
-                        <ToggleButton Name="WPFSearchChipBrowsers"        Content="Browsers"          Style="{StaticResource FilterChipToggleStyle}"/>
-                        <ToggleButton Name="WPFSearchChipCommunications"  Content="Communications"    Style="{StaticResource FilterChipToggleStyle}"/>
-                        <ToggleButton Name="WPFSearchChipDevelopment"     Content="Development"       Style="{StaticResource FilterChipToggleStyle}"/>
-                        <ToggleButton Name="WPFSearchChipDocument"        Content="Document"          Style="{StaticResource FilterChipToggleStyle}"/>
-                        <ToggleButton Name="WPFSearchChipGames"           Content="Games"             Style="{StaticResource FilterChipToggleStyle}"/>
-                        <ToggleButton Name="WPFSearchChipMicrosoftTools"  Content="Microsoft Tools"   Style="{StaticResource FilterChipToggleStyle}"/>
-                        <ToggleButton Name="WPFSearchChipMultimediaTools" Content="Multimedia Tools"  Style="{StaticResource FilterChipToggleStyle}"/>
-                        <ToggleButton Name="WPFSearchChipProTools"        Content="Pro Tools"         Style="{StaticResource FilterChipToggleStyle}"/>
-                        <ToggleButton Name="WPFSearchChipSelfhostedTools" Content="Selfhosted Tools"  Style="{StaticResource FilterChipToggleStyle}"/>
-                        <ToggleButton Name="WPFSearchChipUtilities"       Content="Utilities"        Style="{StaticResource FilterChipToggleStyle}"/>
+                    <WrapPanel Grid.Row="1" Orientation="Horizontal" Margin="5,4,5,7" Name="WPFSearchChips">
+                        <TextBlock Text="&#xE71C;" FontFamily="Segoe MDL2 Assets" FontSize="{DynamicResource IconFontSize}" Foreground="{DynamicResource LabelboxForegroundColor}" Background="Transparent" VerticalAlignment="Center" Margin="10,0,10,0" ToolTip="Filter by category. Ctrl click to select more than one."/>
+                        <ToggleButton Name="WPFSearchChipAll" Content="All" Style="{StaticResource FilterChipToggleStyle}" IsChecked="True"/>
+                        <ToggleButton Name="WPFSearchChipBrowsers" Content="Browsers" Style="{StaticResource FilterChipToggleStyle}"/>
+                        <ToggleButton Name="WPFSearchChipCommunications" Content="Communications" Style="{StaticResource FilterChipToggleStyle}"/>
+                        <ToggleButton Name="WPFSearchChipDevelopment" Content="Development" Style="{StaticResource FilterChipToggleStyle}"/>
+                        <ToggleButton Name="WPFSearchChipDocument" Content="Document" Style="{StaticResource FilterChipToggleStyle}"/>
+                        <ToggleButton Name="WPFSearchChipGames" Content="Games" Style="{StaticResource FilterChipToggleStyle}"/>
+                        <ToggleButton Name="WPFSearchChipMicrosoftTools" Content="Microsoft Tools" Style="{StaticResource FilterChipToggleStyle}"/>
+                        <ToggleButton Name="WPFSearchChipMultimediaTools" Content="Multimedia Tools" Style="{StaticResource FilterChipToggleStyle}"/>
+                        <ToggleButton Name="WPFSearchChipProTools" Content="Pro Tools" Style="{StaticResource FilterChipToggleStyle}"/>
+                        <ToggleButton Name="WPFSearchChipSelfhostedTools" Content="Selfhosted Tools" Style="{StaticResource FilterChipToggleStyle}"/>
+                        <ToggleButton Name="WPFSearchChipUtilities" Content="Utilities" Style="{StaticResource FilterChipToggleStyle}"/>
                     </WrapPanel>
-
                     <Grid Grid.Row="2" Margin="{DynamicResource TabContentMargin}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
                         <Grid Name="appscategory" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <Grid Name="appspanel" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </Grid>
@@ -1414,133 +1384,44 @@
             </TabItem>
             <TabItem Header="Tweaks" Visibility="Collapsed" Name="WPFTab2">
                 <Grid Background="Transparent">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
+                    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="12,8,12,6">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,12,0">
-                            <TextBlock Text="Tweaks"
-                                       FontSize="24"
-                                       FontWeight="Bold"
-                                       Foreground="{DynamicResource MainForegroundColor}"
-                                       Background="Transparent"/>
-                            <TextBlock Text="Review selected changes before applying them."
-                                       Margin="0,3,0,0"
-                                       FontSize="13"
-                                       TextWrapping="Wrap"
-                                       Foreground="{DynamicResource MainForegroundColor}"
-                                       Background="Transparent"/>
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,12,0">
+                            <TextBlock Text="Tweaks" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource MainForegroundColor}" Background="Transparent"/>
+                            <TextBlock Text="Choose settings carefully and review your selection before applying." Margin="0,3,0,0" FontSize="13" Foreground="{DynamicResource MainForegroundColor}" Background="Transparent" TextWrapping="Wrap"/>
                         </StackPanel>
-
-                        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
-                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <WrapPanel HorizontalAlignment="Right">
                                 <Button Name="WPFminimal" Content="Minimal" Margin="2" Width="88" Height="30"/>
                                 <Button Name="WPFstandard" Content="Standard" Margin="2" Width="88" Height="30"/>
                                 <Button Name="WPFAdvanced" Content="Custom" Margin="2" Width="88" Height="30"/>
                             </WrapPanel>
-                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,3,0,0">
+                            <WrapPanel HorizontalAlignment="Right" Margin="0,3,0,0">
                                 <Button Name="WPFClearTweaksSelection" Content="Clear" Margin="2" Width="68" Height="27"/>
                                 <Button Name="WPFGetInstalledTweaks" Content="Select Installed" Margin="2" Width="118" Height="27"/>
                                 <Button Name="WPFAppxRemoval" Content="AppX Removal" Margin="2" Width="105" Height="27"/>
                             </WrapPanel>
                         </StackPanel>
                     </Grid>
-
                     <Grid Grid.Row="1" Margin="12,4,12,12">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="278"/>
-                        </Grid.ColumnDefinitions>
-
-                        <ScrollViewer Grid.Column="0"
-                                      VerticalScrollBarVisibility="Auto"
-                                      HorizontalScrollBarVisibility="Disabled"
-                                      Margin="0,0,10,0">
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="260"/></Grid.ColumnDefinitions>
+                        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,10,0">
                             <Grid Name="tweakspanel" Background="Transparent"/>
                         </ScrollViewer>
-
-                        <Border Grid.Column="1"
-                                Style="{StaticResource BorderStyle}"
-                                Padding="13"
-                                VerticalAlignment="Stretch">
+                        <Border Grid.Column="1" Style="{StaticResource BorderStyle}" Padding="13">
                             <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-
-                                <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,0,0,8">
-                                    <TextBlock Text="Review changes"
-                                               FontSize="18"
-                                               FontWeight="Bold"
-                                               Foreground="{DynamicResource MainForegroundColor}"
-                                               Background="Transparent"/>
-                                    <TextBlock Name="WPFSelectedTweaksCount"
-                                               Text="0 tweaks will run"
-                                               Margin="0,4,0,0"
-                                               FontSize="12"
-                                               Foreground="{DynamicResource MainForegroundColor}"
-                                               Background="Transparent"/>
+                                <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0" Margin="0,0,0,8">
+                                    <TextBlock Text="Review changes" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource MainForegroundColor}" Background="Transparent"/>
+                                    <TextBlock Text="Selected tweaks are shown by their checked state in the list." Margin="0,4,0,0" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource MainForegroundColor}" Background="Transparent"/>
                                     <Separator Margin="0,8,0,0"/>
                                 </StackPanel>
-
-                                <ScrollViewer Grid.Row="1"
-                                              VerticalScrollBarVisibility="Auto"
-                                              HorizontalScrollBarVisibility="Disabled">
-                                    <StackPanel>
-                                        <TextBlock Name="WPFNoTweaksSelected"
-                                                   Text="Select a tweak to review it here."
-                                                   TextWrapping="Wrap"
-                                                   Margin="0,4,0,8"
-                                                   FontSize="12"
-                                                   Foreground="{DynamicResource MainForegroundColor}"
-                                                   Background="Transparent"/>
-                                        <ItemsControl Name="WPFSelectedTweaksList">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Border BorderBrush="{DynamicResource BorderColor}"
-                                                            BorderThickness="0,0,0,1"
-                                                            Padding="4,7"
-                                                            Margin="0,0,0,2">
-                                                        <TextBlock Text="{Binding}"
-                                                                   TextWrapping="Wrap"
-                                                                   FontSize="12"
-                                                                   Foreground="{DynamicResource MainForegroundColor}"
-                                                                   Background="Transparent"/>
-                                                    </Border>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>
-                                </ScrollViewer>
-
-                                <StackPanel Grid.Row="2" Orientation="Vertical" Margin="0,10,0,0">
-                                    <TextBlock Text="A restore point is recommended before system-level changes."
-                                               FontSize="11"
-                                               TextWrapping="Wrap"
-                                               Foreground="{DynamicResource MainForegroundColor}"
-                                               Background="Transparent"/>
-                                    <Button Name="WPFTweaksbutton"
-                                            Content="Apply selected tweaks"
-                                            Width="Auto"
-                                            Height="38"
-                                            Margin="0,10,0,5"
-                                            HorizontalAlignment="Stretch"
-                                            Background="{DynamicResource ProgressBarForegroundColor}"
-                                            Foreground="#FFFFFF"/>
-                                    <Button Name="WPFUndoall"
-                                            Content="Undo selected tweaks"
-                                            Width="Auto"
-                                            Height="31"
-                                            Margin="0,2,0,0"
-                                            HorizontalAlignment="Stretch"/>
+                                <TextBlock Grid.Row="1" Text="Hover over each tweak for its description. Some changes affect registry values, services, privacy, or Windows features." FontSize="12" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,4,0,8" Foreground="{DynamicResource MainForegroundColor}" Background="Transparent"/>
+                                <StackPanel Grid.Row="2" Margin="0,10,0,0">
+                                    <TextBlock Text="Create a restore point before system-level changes when possible." FontSize="11" TextWrapping="Wrap" Foreground="{DynamicResource MainForegroundColor}" Background="Transparent"/>
+                                    <Button Name="WPFTweaksbutton" Content="Apply selected tweaks" Width="Auto" Height="38" Margin="0,10,0,5" HorizontalAlignment="Stretch" Background="{DynamicResource ProgressBarForegroundColor}" Foreground="#FFFFFF"/>
+                                    <Button Name="WPFUndoall" Content="Undo selected tweaks" Width="Auto" Height="31" Margin="0,2,0,0" HorizontalAlignment="Stretch"/>
                                 </StackPanel>
                             </Grid>
                         </Border>
