@@ -316,7 +316,7 @@ Describe "XAML document" {
         $navPanel.GetAttribute("VerticalAlignment") | Should -Be "Top"
         $sidebar = $script:xaml.SelectSingleNode('//*[local-name()="Border"][*[local-name()="ScrollViewer"]/*[local-name()="StackPanel"]/*[local-name()="StackPanel"][@Name="NavDockPanel"]]')
         $sidebar.GetAttribute("Grid.Column") | Should -Be "0"
-        $sidebar.GetAttribute("Grid.RowSpan") | Should -Be "3"
+        $sidebar.GetAttribute("Grid.RowSpan") | Should -Be "2"
         $actionPanel.GetAttribute("VerticalAlignment") | Should -Be "Center"
 
         foreach ($buttonName in $topBarButtonNames) {
