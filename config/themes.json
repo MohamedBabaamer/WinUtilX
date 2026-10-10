@@ -21,9 +21,9 @@
     "CheckBoxMargin": "12,0,0,3",
     "TabContentMargin": "10",
     "TabButtonFontSize": "13",
-    "TabButtonWidth": "112",
-    "TabButtonHeight": "32",
-    "TabRowHeightInPixels": "52",
+    "TabButtonWidth": "230",
+    "TabButtonHeight": "38",
+    "TabRowHeightInPixels": "0",
     "ToolTipWidth": "340",
     "IconFontSize": "14",
     "IconButtonSize": "36",
@@ -43,7 +43,8 @@
     "CheckboxMouseOverColor": "#D9E2F3",
     "ButtonBorderThickness": "1",
     "ButtonMargin": "3",
-    "ButtonCornerRadius": "7"
+    "ButtonCornerRadius": "7",
+    "SidebarWidth": "270"
   },
   "Light": {
     "AppInstallUnselectedColor": "#FFFFFF",
