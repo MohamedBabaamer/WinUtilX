@@ -1,7 +1,7 @@
 {
     "WPFInstall": {
         "Content": "Install/Upgrade Applications",
-        "Category": "____Actions",
+        "Category": "__Actions",
         "Type": "Button",
         "Order": "1",
         "Description": "Install or upgrade the selected applications"
