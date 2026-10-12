@@ -1311,7 +1311,8 @@
             </Grid>
         </Grid>
 
-<StackPanel Name="NavDockPanel" Orientation="Vertical" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="220" Margin="10,10,8,10">
+<ScrollViewer Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,0">
+            <StackPanel Name="NavDockPanel" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="220" Margin="10,10,8,10">
                 <StackPanel Name="NavLogoPanel" Orientation="Horizontal" HorizontalAlignment="Left" Background="{DynamicResource MainBackgroundColor}" SnapsToDevicePixels="True" Margin="8,8,8,18">
                 </StackPanel>
                 <ToggleButton Style="{StaticResource TabToggleButton}" Margin="0,3,0,3" Height="{DynamicResource TabButtonHeight}" Width="190" HorizontalContentAlignment="Left" Padding="12,0,8,0"
@@ -1354,7 +1355,10 @@
                         </TextBlock>
                     </ToggleButton.Content>
                 </ToggleButton>
+                <Separator Margin="8,12,8,10" Background="{DynamicResource BorderColor}"/>
+                <Grid Name="InstallNavigationPanel" Width="200" HorizontalAlignment="Stretch" Margin="0,0,0,10"/>
             </StackPanel>
+        </ScrollViewer>
 
         <TabControl Name="WPFTabNav" Background="Transparent" Width="Auto" Height="Auto" BorderBrush="Transparent" BorderThickness="0" Grid.Row="2" Grid.Column="1" Padding="8">
             <TabItem Header="Install" Visibility="Collapsed" Name="WPFTab1">
@@ -1393,7 +1397,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Grid Name="appscategory" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid Name="appscategory" Grid.Column="0" Visibility="Collapsed" Width="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         </Grid>
 
                         <Grid Name="appspanel" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
