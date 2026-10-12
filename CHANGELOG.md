@@ -11,7 +11,7 @@ All notable changes to WinUtilX are recorded here. Published GitHub Releases als
 ### Changed
 - Keep the original PowerShell/WPF engine while improving the native UI theme, spacing, focus, hover, and disabled states.
 - Sync the application catalog with the AppHub list of 242 applications.
-## Unreleased
+## v0.1.1
 
 - Moved the primary navigation and Install action controls into a fixed, scalable left sidebar.
 - Added compact, flat sidebar controls that keep long action labels readable.
