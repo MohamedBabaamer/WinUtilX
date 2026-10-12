@@ -123,7 +123,9 @@ Always review an application's source and details before installing it.
 
 ## Interface and project structure
 
-WinUtilX retains its native PowerShell/WPF architecture. The interface has refined Segoe UI typography, spacing, cards, light/dark theme resources, and clearer hover, focus, selected, and disabled states. It aims to feel more consistent while remaining lightweight; it is not a copy of another Windows utility's interface.
+WinUtilX retains its native PowerShell/WPF architecture. The interface uses a fixed, scalable left navigation sidebar for the main tools and Install actions, with compact full-width controls that keep long labels readable. Config and Tweaks use denser action layouts, while light/dark theme resources provide consistent backgrounds, contrast, hover, focus, selected, and disabled states. It aims to feel more consistent while remaining lightweight; it is not a copy of another Windows utility's interface.
+
+The main sidebar contains **Install**, **Tweaks**, **Config**, **Updates**, and **Win11 Creator**. When Install is active, its **Action**, **Package Manager**, and **Selection** controls appear below the divider in the same sidebar. The Config page includes a dedicated header and compact feature controls, and the Tweaks page keeps recommended profiles on one compact row where space allows.
 
 | Path | Purpose |
 |---|---|

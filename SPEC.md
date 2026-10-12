@@ -75,6 +75,9 @@ Because the final script is concatenated, code cannot rely on runtime module imp
 ## UI And Event Contract
 
 - UI layout lives in `xaml/inputXML.xaml`.
+- The main navigation is a fixed, theme-aware left sidebar. Install-specific actions, package-manager choices, and selection controls are rendered into the same sidebar below the primary navigation.
+- Sidebar and generated Config controls use shared theme resources for width, height, margins, and font scaling; long labels must remain readable without horizontal scrolling.
+- Config and Tweaks surfaces should prefer compact, content-appropriate controls over the global button width.
 - Named WPF controls are discovered and stored in `$sync`.
 - Button/action wiring follows a naming convention: an element named like `WPFThingButton` maps to a function named like `Invoke-WPFThingButton`.
 

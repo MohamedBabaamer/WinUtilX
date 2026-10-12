@@ -32,6 +32,14 @@ function Invoke-WPFUIElements {
     $window = $sync.form
 
     $borderstyle = $window.FindResource("BorderStyle")
+    $panelBorderStyle = if ($targetGridName -eq "appscategory") {
+        $window.FindResource("SidebarNavigationBorderStyle")
+    }
+    else {
+        $borderstyle
+    }
+    $compactNavigation = $targetGridName -eq "appscategory"
+    $compactConfig = $targetGridName -eq "featurespanel"
     $HoverTextBlockStyle = $window.FindResource("HoverTextBlockStyle")
     $ColorfulToggleSwitchStyle = $window.FindResource("ColorfulToggleSwitchStyle")
     $ToggleButtonStyle = $window.FindResource("ToggleButtonStyle")
@@ -110,7 +118,7 @@ function Invoke-WPFUIElements {
         $border = New-Object Windows.Controls.Border
         $border.VerticalAlignment = "Stretch"
         [System.Windows.Controls.Grid]::SetColumn($border, $panelcount)
-        $border.style = $borderstyle
+        $border.style = $panelBorderStyle
         $targetGrid.Children.Add($border) | Out-Null
 
         # Use a DockPanel to contain the content
@@ -163,6 +171,9 @@ function Invoke-WPFUIElements {
             [System.Windows.Automation.AutomationProperties]::SetName($label, $categoryCleanName)
             $label.SetResourceReference([Windows.Controls.Control]::FontSizeProperty, "HeaderFontSize")
             $label.SetResourceReference([Windows.Controls.Control]::FontFamilyProperty, "HeaderFontFamily")
+            if ($compactNavigation -or $compactConfig) {
+                $label.SetResourceReference([Windows.Controls.Control]::MarginProperty, "CompactControlMargin")
+            }
             $label.UseLayoutRounding = $true
             $stackPanelContainer.Children.Add($label) | Out-Null
             $sync[$category] = $label
@@ -418,10 +429,22 @@ function Invoke-WPFUIElements {
                         $button = New-Object Windows.Controls.Button
                         $button.Name = $entryInfo.Name
                         $button.Content = $entryInfo.Content
-                        $button.HorizontalAlignment = "Left"
-                        $button.SetResourceReference([Windows.Controls.Control]::MarginProperty, "ButtonMargin")
+                        $button.HorizontalAlignment = if ($compactNavigation) { "Stretch" } else { "Left" }
+                        if ($compactNavigation -or $compactConfig) {
+                            $button.SetResourceReference([Windows.Controls.Control]::MarginProperty, "CompactControlMargin")
+                            $button.SetResourceReference([Windows.Controls.Control]::HeightProperty, "CompactButtonHeight")
+                        }
+                        else {
+                            $button.SetResourceReference([Windows.Controls.Control]::MarginProperty, "ButtonMargin")
+                        }
                         $button.SetResourceReference([Windows.Controls.Control]::FontSizeProperty, "ButtonFontSize")
-                        if ($entryInfo.ButtonWidth) {
+                        if ($compactNavigation) {
+                            $button.SetResourceReference([Windows.Controls.Control]::WidthProperty, "AppNavigationButtonWidth")
+                        }
+                        elseif ($compactConfig) {
+                            $button.SetResourceReference([Windows.Controls.Control]::WidthProperty, "ConfigButtonWidth")
+                        }
+                        elseif ($entryInfo.ButtonWidth) {
                             $baseWidth = [int]$entryInfo.ButtonWidth
                             $button.Width = [math]::Max($baseWidth, 350)
                         }
@@ -466,7 +489,12 @@ function Invoke-WPFUIElements {
                         $radioButton.GroupName = $entryInfo.GroupName
                         $radioButton.Content = $entryInfo.Content
                         $radioButton.HorizontalAlignment = "Left"
-                        $radioButton.SetResourceReference([Windows.Controls.Control]::MarginProperty, "CheckBoxMargin")
+                        if ($compactConfig) {
+                            $radioButton.SetResourceReference([Windows.Controls.Control]::MarginProperty, "CompactControlMargin")
+                        }
+                        else {
+                            $radioButton.SetResourceReference([Windows.Controls.Control]::MarginProperty, "CheckBoxMargin")
+                        }
                         $radioButton.SetResourceReference([Windows.Controls.Control]::FontSizeProperty, "ButtonFontSize")
                         $radioButton.ToolTip = $entryInfo.Description
                         $radioButton.UseLayoutRounding = $true
@@ -511,7 +539,12 @@ function Invoke-WPFUIElements {
                         $checkBox.Content = $entryInfo.Content
                         $checkBox.SetResourceReference([Windows.Controls.Control]::FontSizeProperty, "FontSize")
                         $checkBox.ToolTip = Get-WinUtilEntryToolTip -Description $entryInfo.Description -Key $entryInfo.Name
-                        $checkBox.SetResourceReference([Windows.Controls.Control]::MarginProperty, "CheckBoxMargin")
+                        if ($compactConfig) {
+                            $checkBox.SetResourceReference([Windows.Controls.Control]::MarginProperty, "CompactControlMargin")
+                        }
+                        else {
+                            $checkBox.SetResourceReference([Windows.Controls.Control]::MarginProperty, "CheckBoxMargin")
+                        }
                         $checkBox.UseLayoutRounding = $true
                         [System.Windows.Automation.AutomationProperties]::SetName($checkBox, $entryInfo.Content)
                         if ($entryInfo.Checked -eq $true) {

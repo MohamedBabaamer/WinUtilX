@@ -1,6 +1,11 @@
 {
   "shared": {
     "AppEntryWidth": "230",
+    "AppNavigationSidebarWidth": "260",
+    "AppNavigationButtonWidth": "220",
+    "ConfigButtonWidth": "300",
+    "CompactButtonHeight": "30",
+    "CompactControlMargin": "2",
     "AppEntryFontSize": "13",
     "AppEntryIconSize": "28",
     "AppEntryMargin": "5",
@@ -84,6 +89,7 @@
     "ToggleButtonOnColor": "#2563EB",
     "ToggleButtonOffColor": "#94A3B8",
     "ToolTipBackgroundColor": "#FFFFFF",
+    "SidebarBackgroundColor": "#FFFFFF",
     "BorderColor": "#D7DEE8",
     "BorderOpacity": "0.8"
   },
@@ -126,6 +132,7 @@
     "ToggleButtonOnColor": "#60A5FA",
     "ToggleButtonOffColor": "#64748B",
     "ToolTipBackgroundColor": "#20252B",
+    "SidebarBackgroundColor": "#1B2026",
     "BorderColor": "#343C46",
     "BorderOpacity": "0.9"
   }
